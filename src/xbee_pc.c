@@ -71,16 +71,14 @@ int init(){
 		}
 		return 1;
 }
-void initialiazeNiboCom(){
 
-}
 int i;
 int main(void){
 	if(!init())
 		return 1;
 	while(1){
 		printf("Listening to nibo...\n");
-		res = read(fd,buf,1);
+		res = read(fd,buf,1); //wait until receiving a command from the nibo
 		int a = buf[0] - '0';
 		print_received_command(a);
 		if(a == manual){

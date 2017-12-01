@@ -16,9 +16,9 @@
 #include <stdint.h>
 
 #define dev "/dev/ttyUSB0"
-
+//Enumeration for the available nibo modes
 enum modes {manual, autonom, forward, backwards, half_right, half_left, right, left, voltage };
 
 int init();
 
-void initializeNiboCom();
+

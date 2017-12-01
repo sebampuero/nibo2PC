@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/command_interpreter.c \
 ../src/xbee_pc.c 
 
 OBJS += \
+./src/command_interpreter.o \
 ./src/xbee_pc.o 
 
 C_DEPS += \
+./src/command_interpreter.d \
 ./src/xbee_pc.d 
 
 

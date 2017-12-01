@@ -6,8 +6,10 @@
  */
 #include "xbee_pc.h"
 
-char buf[4];
-//pointed on the opened serial device
+#include "command_interpreter.h"
+
+char buf[1];
+//pointe[d on the opened serial device
 int fd;
 //to save the count of chars received
 int res;
@@ -72,18 +74,21 @@ int init(){
 void initialiazeNiboCom(){
 
 }
-
+int i;
 int main(void){
 	if(!init())
 		return 1;
 	while(1){
-		printf("Waiting for NIBO...\n");
-		read(fd,buf,1);
-		printf("NIBO is requesting a command\n");
-		printf("Send a command back to NIBO\n");
-        scanf(" %d",&ch);
-		printf("Char: %d\n",ch);
-		write(fd,&ch,1);
+		printf("Listening to nibo...\n");
+		res = read(fd,buf,1);
+		int a = buf[0] - '0';
+		print_received_command(a);
+		if(a == manual){
+			printf("Send a command back to nibo\n");
+			print_available_commands();
+			scanf(" %d",&ch);
+			write(fd,&ch,1);
+		}
 	}
 	// Before leaving, reset the old serial settings and close the serial port
 	tcsetattr(fd, TCSANOW, &old_termios);

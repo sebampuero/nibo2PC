@@ -12,17 +12,12 @@
 #include <fcntl.h>
 #include <termios.h>
 #include <errno.h>
+#include <stdlib.h>
+#include <stdint.h>
 
-#define dev "/dev/ttyUSB3"
-#define nibo_manual 1
-#define nibo_auto 2
-#define nibo_forward 3
-#define nibo_backward 4
-#define nibo_half_right 5
-#define nibo_half_left 6
-#define nibo_right 7
-#define nibo_left 8
-#define nibo_print_voltage 9
+#define dev "/dev/ttyUSB0"
+
+enum modes {manual, autonom, forward, backwards, half_right, half_left, right, left, voltage };
 
 int init();
 
